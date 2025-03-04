@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: playlist-service
+  datasource:
+    url: jdbc:mysql://${DB_URL:192.168.1.10}:${DB_PORT:3306}/${DB_NAME:mupl_engagement}
+    username: ${DB_USER:root}
+    password: ${DB_PASSWORD:password}
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+server:
+  port: 13000
+
+services:
+  music-service: ${MUSIC_SERVICE:localhost:11000}
