@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ShareRepository extends JpaRepository<ShareEntity, Long> {
+    long countBySongId(Long songId);
 }
