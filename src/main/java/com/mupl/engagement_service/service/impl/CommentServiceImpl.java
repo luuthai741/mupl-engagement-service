@@ -13,6 +13,7 @@ import com.mupl.engagement_service.service.CommentService;
 import com.mupl.engagement_service.util.constant.CommentStatus;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,6 +23,7 @@ import org.springframework.util.ObjectUtils;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -87,6 +89,12 @@ public class CommentServiceImpl implements CommentService {
         CommentResponse commentResponse = modelMapper.map(commentEntity, CommentResponse.class);
         commentResponse.setContent("This comment has been deleted");
         return commentResponse;
+    }
+
+    @Override
+    public void deleteAllCommentsBySongId(Long songId) {
+        commentRepository.deleteBySongId(songId);
+        log.info("Deleted all comments by songId: {}", songId);
     }
 
     private SongResponse getSongById(Long songId) {

@@ -6,4 +6,5 @@ import com.mupl.engagement_service.dto.response.ShareResponse;
 public interface ShareService {
     ShareResponse share(Long songId, ShareRequest shareRequest);
     long countShareBySongId(Long songId);
+    void deleteAllSharesBySongId(Long songId);
 }

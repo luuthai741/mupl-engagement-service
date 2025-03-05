@@ -10,12 +10,14 @@ import com.mupl.engagement_service.repository.LikeRepository;
 import com.mupl.engagement_service.service.LikeService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import java.time.LocalDateTime;
 
+@Slf4j
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -49,6 +51,12 @@ public class LikeServiceImpl implements LikeService {
     @Override
     public long countLikesBySongId(Long songId) {
         return likeRepository.countBySongId(songId);
+    }
+
+    @Override
+    public void deleteAllLikesBySongId(Long songId) {
+        likeRepository.deleteBySongId(songId);
+        log.info("Delete all likes by songId: {}", songId);
     }
 
     private SongResponse getSongById(Long songId) {

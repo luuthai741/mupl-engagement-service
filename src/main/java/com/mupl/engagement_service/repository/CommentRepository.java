@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CommentRepository extends JpaRepository<CommentEntity, Long> {
     Page<CommentEntity> findAllBySongId(Long songId, Pageable pageable);
+    void deleteBySongId(Long songId);
 }

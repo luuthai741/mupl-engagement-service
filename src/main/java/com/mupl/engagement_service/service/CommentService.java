@@ -10,4 +10,5 @@ public interface CommentService {
     CommentResponse createComment(Long songId,CommentRequest commentRequest);
     CommentResponse updateComment(Long commentId,CommentRequest commentRequest);
     CommentResponse deleteComment(Long commentId,CommentRequest commentRequest);
+    void deleteAllCommentsBySongId(Long songId);
 }

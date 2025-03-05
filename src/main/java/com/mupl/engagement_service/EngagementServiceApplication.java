@@ -6,10 +6,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients
-public class PlaylistServiceApplication {
+public class EngagementServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PlaylistServiceApplication.class, args);
+		SpringApplication.run(EngagementServiceApplication.class, args);
 	}
 
 }

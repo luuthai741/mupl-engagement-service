@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface LikeRepository extends JpaRepository<LikeEntity, Long> {
     LikeEntity findBySongIdAndUsername(Long songId,String username);
     long countBySongId(Long songId);
+    void deleteBySongId(Long songId);
 }

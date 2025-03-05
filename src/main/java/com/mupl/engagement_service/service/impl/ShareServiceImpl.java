@@ -7,17 +7,20 @@ import com.mupl.engagement_service.repository.ShareRepository;
 import com.mupl.engagement_service.service.ShareService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+@Slf4j
 @Service
 @Transactional
 @RequiredArgsConstructor
 public class ShareServiceImpl implements ShareService {
     private final ShareRepository shareRepository;
     private final ModelMapper modelMapper;
+
     @Override
     public ShareResponse share(Long songId, ShareRequest shareRequest) {
         String username = "anonymous";
@@ -31,5 +34,11 @@ public class ShareServiceImpl implements ShareService {
     @Override
     public long countShareBySongId(Long songId) {
         return shareRepository.countBySongId(songId);
+    }
+
+    @Override
+    public void deleteAllSharesBySongId(Long songId) {
+        shareRepository.deleteBySongId(songId);
+        log.info("Delete all shares by songId: {}", songId);
     }
 }
